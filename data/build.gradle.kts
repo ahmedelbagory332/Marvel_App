@@ -1,13 +1,16 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.kotlin.serialization)
     kotlin("kapt")
 }
 
 android {
     namespace = "com.example.data"
     compileSdk = 35
-
+    buildFeatures {
+        buildConfig = true
+    }
     defaultConfig {
         minSdk = 24
 
@@ -31,6 +34,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    defaultConfig {
+        buildConfigField("String", "MARVEL_PUBLIC_KEY", project.findProperty("MARVEL_PUBLIC_KEY") as String? ?: "")
+        buildConfigField("String", "MARVEL_PRIVATE_KEY", project.findProperty("MARVEL_PRIVATE_KEY") as String? ?: "")
+    }
 }
 
 dependencies {
@@ -38,6 +45,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation(project(":domain"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

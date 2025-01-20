@@ -11,6 +11,5 @@ java {
 dependencies {
     // Coroutines
     implementation(libs.kotlinx.coroutines.core)
-    // paging
-    implementation(libs.androidx.paging.ktx)
+    implementation(libs.javaxInject)
 }
