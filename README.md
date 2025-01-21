@@ -1,4 +1,4 @@
-# Mrvel App
+# Marvel App
 
 
 ## The technology used:
