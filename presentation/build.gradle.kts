@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     kotlin("kapt")
+    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.compose.compiler)
 }
 
@@ -57,6 +58,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     // Retrofit
     implementation(libs.retrofit)
+    implementation(libs.kotlinx.serialization.json)
     // Dagger Hilt
     implementation(libs.dagger.hilt.android)
     kapt(libs.dagger.hilt.compiler)

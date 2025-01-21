@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.domain.navigation.NavItem
+import com.example.presentation.category_screen.CategoryScreen
 import com.example.presentation.character_screen.CharacterScreen
 import com.example.presentation.characters_screen.CharactersScreen
 import com.example.presentation.search_characters_screen.SearchCharactersScreen
@@ -30,6 +31,12 @@ fun App(mainNavController: NavHostController) {
             arguments = listOf(navArgument("characterId") { type = NavType.IntType })
         ) {
             CharacterScreen(mainNavController)
+        }
+
+        composable(route = NavItem.CategoryScreen.route + "/{categoryJson}",
+        ) {
+            val categoryJson = it.arguments?.getString("categoryJson") ?: ""
+            CategoryScreen(mainNavController,categoryJson)
         }
     }
 

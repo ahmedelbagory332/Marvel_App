@@ -1,5 +1,7 @@
 package com.example.domain.models
 
+import kotlinx.serialization.Serializable
+
 data class CharacterModel(
     var name: String? = null,
     var cover: String? = null,
@@ -16,6 +18,7 @@ data class UrlsModel(
     var url: String? = null
 )
 
+@Serializable
 data class ItemModel(
     var resourceURI: String? = null,
     var name: String? = null
