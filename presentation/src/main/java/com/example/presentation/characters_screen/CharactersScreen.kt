@@ -56,7 +56,9 @@ fun CharactersScreen(
                 uiState.characters.isNotEmpty() -> {
                     LazyColumn {
                         items(uiState.characters) {
-                            CharacterCard(image = it.image ?: "", name = it.name ?: "")
+                            CharacterCard(image = it.image ?: "", name = it.name ?: ""){
+                                mainNavController.navigate(NavItem.CharacterScreen.route + "/${it.id}")
+                            }
                         }
                     }
                 }

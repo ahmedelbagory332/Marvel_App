@@ -4,7 +4,9 @@ import com.example.data.BuildConfig
 import com.example.data.api_service.entity.CharactersNetworkEntity
 import com.example.data.utils.GenerateKeys
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
+import retrofit2.http.Url
 
 interface MarvelApi {
 
@@ -39,5 +41,19 @@ interface MarvelApi {
         @Query("nameStartsWith") name: String
     ): CharactersNetworkEntity
 
+    @GET("public/characters/{characterId}")
+    suspend fun getCharacter(
+        @Path("characterId") characterId: Int,
+        @Query("apikey") key: String = BuildConfig.MARVEL_PUBLIC_KEY,
+        @Query("hash") hash: String = GenerateKeys.md5Hash,
+        @Query("ts") ts: String = "${GenerateKeys.ts}"
+    ): CharactersNetworkEntity
 
+    @GET
+    suspend fun getResourceURI(
+        @Url fullUrl: String,
+        @Query("apikey") key: String = BuildConfig.MARVEL_PUBLIC_KEY,
+        @Query("hash") hash: String = GenerateKeys.md5Hash,
+        @Query("ts") ts: String = "${GenerateKeys.ts}"
+    ): CharactersNetworkEntity
 }

@@ -1,5 +1,6 @@
 package com.example.presentation.characters_screen.widget
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,11 +14,14 @@ import androidx.compose.ui.unit.dp
 import com.example.presentation.common.CoilImage
 
 @Composable
-fun CharacterCard(image: String, name: String) {
+fun CharacterCard(image: String, name: String, onClick: () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .height(200.dp)
+            .clickable {
+                onClick()
+            }
     ) {
         CoilImage(
             data = image,
